@@ -4,7 +4,7 @@
   display: grid;
   border: 1px solid grey;
   grid-template-columns: 1fr;
-  grid-template-rows: 100px 630px 70px;
+  grid-template-rows: 70px 2fr;
 }
 
 .header {
@@ -14,6 +14,7 @@
 .main_content {
   display: grid;
   grid-template-columns: 2fr 1fr;
+  grid-template-rows: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
 
   border: 1px solid gray;
@@ -22,10 +23,19 @@
 
 .footer {
   border: 1px solid grey;
+  height: 40px;
 }
 
 .display_area {
+  display: grid;
+  height: auto;
+  gap: 5px;
+  /*grid-template-columns: repeat(3, 1fr);*/
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-rows: repeat(auto-fit, minmax(200px, 1fr));
+
   border: 1px solid gray;
+  padding: 20px;
 }
 
 .add_book_area {
@@ -86,4 +96,30 @@ img {
 
 input {
   border: 2px solid gray;
+}
+
+.card {
+  border-left: 8px solid rgb(71, 11, 71);
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: #ffffff;
+  height: 150px;
+  width: 250px;
+  padding: 20px;
+  color: black;
+  text-align: justify;
+}
+.edit-read-status {
+  display: flex;
+  justify-content: space-between;
+}
+
+button {
+  width: 100px;
+  height: 30px;
+  border-radius: 20px;
+  color: white;
+  font-weight: bold;
+  background-color: rgb(71, 11, 71);
+  border: none;
 }
