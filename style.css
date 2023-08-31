@@ -34,7 +34,6 @@
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-template-rows: repeat(auto-fit, minmax(200px, 1fr));
 
-  border: 1px solid gray;
   padding: 20px;
 }
 
@@ -103,7 +102,7 @@ input {
   border-radius: 5px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   background-color: #ffffff;
-  height: 150px;
+  height: 170px;
   width: 250px;
   padding: 20px;
   color: black;

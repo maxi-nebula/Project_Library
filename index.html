@@ -14,17 +14,7 @@
       <div class="header">Header</div>
       <div class="main_content">
         <div>
-          <div class="display_area" id="d1">
-            <div class="card" id="card1">
-              <!--  <p class="title">Title:</p>
-              <p>Author:</p>
-              <p>Total pages:</p>
-              <p class="edit-read-status">
-                Read Already:
-                <img src="./images/pencil.svg" alt="pencil-for-editing" />
-              </p>-->
-            </div>
-          </div>
+          <div class="display_area" id="d1"></div>
         </div>
         <div class="add_book_area">
           <span>Add A New Books</span>
@@ -47,11 +37,17 @@
                   </li>
                   <li>
                     <label for="book_read">Already read?</label>
-                    <input type="checkbox" name="book_read" id="book_read" />
+                    <input
+                      class="checkbox"
+                      type="checkbox"
+                      id="book_isRead"
+                      name="book_read"
+                      value="0"
+                    />
                   </li>
 
                   <button id="plus_icon">+</button>
-                  <button>Clear</button>
+                  <button id="clear_data">Clear</button>
                 </ul>
               </div>
             </form>
