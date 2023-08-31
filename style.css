@@ -29,7 +29,7 @@
 .display_area {
   display: grid;
   height: auto;
-  gap: 5px;
+  gap: 8px;
   /*grid-template-columns: repeat(3, 1fr);*/
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-template-rows: repeat(auto-fit, minmax(200px, 1fr));
@@ -46,6 +46,11 @@
   font-weight: bold;
   font-size: 20px;
   text-align: center;
+}
+.book_counter {
+  border: 2px solid gray;
+  border-radius: 10px;
+  width: 500px;
 }
 
 .form-container {
@@ -97,8 +102,8 @@ input {
   border: 2px solid gray;
 }
 
-.card {
-  border-left: 8px solid rgb(71, 11, 71);
+.card-aRead-T {
+  border-left: 8px solid #ace1af;
   border-radius: 5px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   background-color: #ffffff;
@@ -108,12 +113,61 @@ input {
   color: black;
   text-align: justify;
 }
+
+.card-aRead-F {
+  border-left: 8px solid #f08080;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: #ffffff;
+  height: 170px;
+  width: 250px;
+  padding: 20px;
+  color: black;
+  text-align: justify;
+}
+
+.card-aRead-T-button {
+  margin: 2px;
+  background-color: #ace1af;
+  width: 110px;
+  height: 30px;
+  border-radius: 3px;
+  border: none;
+}
+
+.card-aRead-F-button {
+  margin: 2px;
+  background-color: #f08080;
+  width: 110px;
+  height: 30px;
+  border-radius: 3px;
+  border: none;
+}
+/*.card-aRead-T button {
+  background-color: rgb(22, 177, 81);
+  width: 100px;
+  height: 30px;
+  border-radius: 20px;
+  color: white;
+  font-weight: bold;
+  border: none;
+}
+.card-aRead-F button {
+  background-color: rgb(243, 104, 62);
+  width: 100px;
+  height: 30px;
+  border-radius: 20px;
+  color: white;
+  font-weight: bold;
+  border: none;
+}*/
+
 .edit-read-status {
   display: flex;
   justify-content: space-between;
 }
 
-button {
+.button-others {
   width: 100px;
   height: 30px;
   border-radius: 20px;
