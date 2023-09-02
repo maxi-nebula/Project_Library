@@ -5,7 +5,11 @@ const plusButton = document.getElementById("plus_icon");
 const displayArea = document.getElementById("d1");
 let inputValues = document.querySelectorAll('input[type="text"]');
 let counter = -1;
+let bookCounterValue = 0;
+let removedCount = 0;
 const clearButton = document.getElementById("clear_data");
+const bookCount = document.getElementById("bookcounter");
+const readBooks = document.getElementById("booksread");
 
 //constructor for adding new book
 
@@ -19,7 +23,6 @@ function addNewBook(title, author, pages, alreadyRead) {
 //adding a card on button click and also getting the values from the UI and sending it to the constructor
 plusButton.addEventListener("click", (event) => {
   counter = counter + 1;
-  let bookCounterValue = 0;
 
   event.preventDefault();
 
@@ -36,7 +39,8 @@ plusButton.addEventListener("click", (event) => {
   myLibrary.push(newBook);
   addCard(myLibrary, counter, aRead);
   clearForm(inputValues);
-  bookCounter(bookCounterValue);
+  bookCounter(counter);
+  readCounter(aRead);
 });
 
 //add card function, this is the main function of the project
@@ -97,24 +101,26 @@ addCard = (mL, cV, aR) => {
   const rsDet = document.getElementById(`rstatus${cV}`);
   const bcId = document.getElementById(`bc_${cV}`);
   rButton.setAttribute("class", "rbutton");
-  removeCard(rButton, bookID, bookCounter);
-  switchStatus(rsDet, bcId, aR);
+  removeCard(rButton, bookID, cV);
+  switchStatus(rsDet, bcId);
 };
 
 /*removing button function */
 
-removeCard = (rB, bID, V) => {
+removeCard = (rB, bID, cV) => {
   rB.addEventListener("click", () => {
-    V = V - 1;
     const tobeRemoved = document.getElementById(bID);
-
     tobeRemoved.remove();
+    bookCount.innerText = `${cV}`;
 
-    bookCounter(V);
+    if (bookCount.innerText == 0) {
+      console.log("its 0 now");
+      resetCounter();
+    }
   });
 };
 
-switchStatus = (rD, bId, aR) => {
+switchStatus = (rD, bId) => {
   rD.addEventListener("click", () => {
     if (rD.classList.contains("card-aRead-T-button")) {
       rD.classList.toggle("card-aRead-F-button");
@@ -125,18 +131,6 @@ switchStatus = (rD, bId, aR) => {
       bId.classList.toggle("card-aRead-T");
       rD.textContent = "Read";
     }
-
-    /* if (aR == true) {
-      console.log(aR);
-      rD.classList.toggle("card-aRead-F-button");
-      bId.classList.toggle("card-aRead-F");
-      rD.textContent - "Unread";
-    } else if (aR == false) {
-      console.log(aR);
-      rD.classList.toggle("card-aRead-T-button");
-      bId.classList.toggle("card-aRead-T");
-      rD.textContent = "Read";
-    }*/
   });
 };
 
@@ -152,11 +146,28 @@ clearForm = (ipV) => {
   });
 };
 
-bookCounter = (bC) => {
-  bC = bC + 1;
-  console.log(bC);
-  const bookCount = document.getElementById("bookcounter");
-  bookCount.textContent = `${bC}`;
+bookCounter = (cV) => {
+  if (cV == -1) {
+    cV = cV + 2;
+  } else {
+    cV = cV + 1;
+  }
 
-  const readBooks = document.getElementById("booksread");
+  bookCount.innerText = `${cV}`;
+
+  return cV;
+};
+
+resetCounter = () => {
+  counter = -1;
+};
+
+readCounter = (aR) => {
+  let readBookCount = 0;
+
+  if (aR == true) {
+    readBookCount = readBookCount + 1;
+  }
+
+  readBooks.innerText = `${readBookCount}`;
 };
