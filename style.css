@@ -13,7 +13,7 @@
 
 .main_content {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 3fr 1fr;
   grid-template-rows: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
 
@@ -39,7 +39,7 @@
 
 .add_book_area {
   display: grid;
-  grid-template-rows: 1fr 6fr;
+  gap: 5px;
 }
 
 .add_book_area span {
@@ -48,18 +48,45 @@
   text-align: center;
 }
 .book_counter {
-  border: 2px solid gray;
-  border-radius: 10px;
-  width: 500px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: #ffffff;
+  height: 170px;
+  width: 400px;
+  padding: 20px;
+  color: black;
+  text-align: justify;
+  font-weight: 900px;
+  font-size: 20px;
 }
 
+.book_counter div {
+  display: flex;
+  justify-content: space-evenly;
+}
 .form-container {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
-  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: #ffffff;
+  height: 500px;
+  width: 400px;
+  padding: 20px;
+  color: black;
 }
 
+.form-container input {
+  height: 40px;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.form-container label {
+  font-size: 20px;
+  font-weight: 800px;
+}
 ul,
 li {
   list-style: none;
@@ -67,14 +94,9 @@ li {
 
 ul li {
   display: grid;
-  padding: 3px;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(5, 1fr);
-
-  /* display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  padding: 20px;*/
+  grid-template-columns: 100px 270px;
+  grid-template-rows: 10px 10px 10px 10px 20px;
+  gap: 2px;
 }
 img {
   height: 30px;
@@ -169,7 +191,7 @@ input {
 
 .button-others {
   width: 100px;
-  height: 30px;
+  height: 40px;
   border-radius: 20px;
   color: white;
   font-weight: bold;

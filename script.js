@@ -19,6 +19,7 @@ function addNewBook(title, author, pages, alreadyRead) {
 //adding a card on button click and also getting the values from the UI and sending it to the constructor
 plusButton.addEventListener("click", (event) => {
   counter = counter + 1;
+  let bookCounterValue = 0;
 
   event.preventDefault();
 
@@ -35,11 +36,13 @@ plusButton.addEventListener("click", (event) => {
   myLibrary.push(newBook);
   addCard(myLibrary, counter, aRead);
   clearForm(inputValues);
+  bookCounter(bookCounterValue);
 });
 
 //add card function, this is the main function of the project
 addCard = (mL, cV, aR) => {
   /*mapping each field of the object into seperate array like title array,auhtors array,pages array and read status array*/
+  let readCount = 0;
   let titles = mL.map((L) => L.title);
   let authors = mL.map((L) => L.author);
   let pages = mL.map((L) => L.pages);
@@ -94,17 +97,20 @@ addCard = (mL, cV, aR) => {
   const rsDet = document.getElementById(`rstatus${cV}`);
   const bcId = document.getElementById(`bc_${cV}`);
   rButton.setAttribute("class", "rbutton");
-  removeCard(rButton, bookID);
+  removeCard(rButton, bookID, bookCounter);
   switchStatus(rsDet, bcId, aR);
 };
 
 /*removing button function */
 
-removeCard = (rB, bID) => {
+removeCard = (rB, bID, V) => {
   rB.addEventListener("click", () => {
+    V = V - 1;
     const tobeRemoved = document.getElementById(bID);
 
     tobeRemoved.remove();
+
+    bookCounter(V);
   });
 };
 
@@ -144,4 +150,13 @@ clearForm = (ipV) => {
   ipV.forEach((ip) => {
     ip.value = "";
   });
+};
+
+bookCounter = (bC) => {
+  bC = bC + 1;
+  console.log(bC);
+  const bookCount = document.getElementById("bookcounter");
+  bookCount.textContent = `${bC}`;
+
+  const readBooks = document.getElementById("booksread");
 };
