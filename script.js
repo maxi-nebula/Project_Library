@@ -6,7 +6,7 @@ const displayArea = document.getElementById("d1");
 let inputValues = document.querySelectorAll('input[type="text"]');
 let counter = -1;
 let bookCounterValue = 0;
-let removedCount = 0;
+
 const clearButton = document.getElementById("clear_data");
 const bookCount = document.getElementById("bookcounter");
 const readBooks = document.getElementById("booksread");
@@ -39,14 +39,13 @@ plusButton.addEventListener("click", (event) => {
   myLibrary.push(newBook);
   addCard(myLibrary, counter, aRead);
   clearForm(inputValues);
-  bookCounter(counter);
-  readCounter(aRead);
+  bookCounter(counter, aRead);
 });
 
 //add card function, this is the main function of the project
 addCard = (mL, cV, aR) => {
   /*mapping each field of the object into seperate array like title array,auhtors array,pages array and read status array*/
-  let readCount = 0;
+
   let titles = mL.map((L) => L.title);
   let authors = mL.map((L) => L.author);
   let pages = mL.map((L) => L.pages);
@@ -62,19 +61,18 @@ addCard = (mL, cV, aR) => {
   const pageDetail = document.createElement("p");
   const readStatusDetail = document.createElement("button");
   readStatusDetail.id = `rstatus${cV}`;
-
+  readStatusDetail.classList.add("card-button");
   const removeButton = document.createElement("button");
-  removeButton.setAttribute("id", "remove_button");
   removeButton.setAttribute("value", cV);
   removeButton.id = `b${cV}`;
 
   if (aR == true) {
     bookCard.classList.add("card-aRead-T");
-    readStatusDetail.classList.add("card-aRead-T-button");
+
     readStatusDetail.textContent = `Read`;
   } else if (aR == false) {
     bookCard.classList.add("card-aRead-F");
-    readStatusDetail.classList.add("card-aRead-F-button");
+
     readStatusDetail.textContent = `Unread`;
   }
 
@@ -100,9 +98,10 @@ addCard = (mL, cV, aR) => {
   const rButton = document.getElementById(`b${cV}`);
   const rsDet = document.getElementById(`rstatus${cV}`);
   const bcId = document.getElementById(`bc_${cV}`);
-  rButton.setAttribute("class", "rbutton");
+  rButton.setAttribute("class", "card-button");
+
   removeCard(rButton, bookID, cV);
-  switchStatus(rsDet, bcId);
+  switchStatus(rsDet, bcId, bookCard);
 };
 
 /*removing button function */
@@ -120,17 +119,14 @@ removeCard = (rB, bID, cV) => {
   });
 };
 
-switchStatus = (rD, bId) => {
+switchStatus = (rD, bookC, bcId) => {
   rD.addEventListener("click", () => {
-    if (rD.classList.contains("card-aRead-T-button")) {
-      rD.classList.toggle("card-aRead-F-button");
-      bId.classList.toggle("card-aRead-F");
-      rD.textContent = "Unread";
-    } else if (rD.classList.contains("card-aRead-F-button")) {
-      rD.classList.toggle("card-aRead-T-button");
-      bId.classList.toggle("card-aRead-T");
-      rD.textContent = "Read";
+    if (bookC.classList.contains("card-aRead-T")) {
+      bcId.classList.toggle("card-aRead-F");
+    } else if (bookC.classList.contains("card-aRead-F")) {
+      bcId.classList.toggle("card-aRead-T");
     }
+    changeTextContent(rD);
   });
 };
 
@@ -146,7 +142,15 @@ clearForm = (ipV) => {
   });
 };
 
-bookCounter = (cV) => {
+changeTextContent = (readStatus) => {
+  console.log(readStatus.textContent);
+  if (readStatus.textContent == "Read") {
+    readStatus.textContent = "Unread";
+  } else if (readStatus.textContent == "Unread") {
+    readStatus.textContent = "Read";
+  }
+};
+bookCounter = (cV, aR) => {
   if (cV == -1) {
     cV = cV + 2;
   } else {
@@ -162,12 +166,15 @@ resetCounter = () => {
   counter = -1;
 };
 
-readCounter = (aR) => {
-  let readBookCount = 0;
+readCounter = () => {
+  let readBooksCount = 0;
 
   if (aR == true) {
-    readBookCount = readBookCount + 1;
+    console.log("read status is true");
+    readBooksCount = readBooksCount + 1;
+    console.log(readBooksCount);
+    readBooks.innerText = `${readBooksCount}`;
   }
 
-  readBooks.innerText = `${readBookCount}`;
+  return readBooksCount;
 };

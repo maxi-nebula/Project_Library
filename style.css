@@ -2,28 +2,43 @@
 
 .container {
   display: grid;
-  border: 1px solid grey;
+
   grid-template-columns: 1fr;
   grid-template-rows: 70px 2fr;
+  gap: 10px;
 }
 
 .header {
-  border: 1px solid grey;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color: #e6e6fa;*/
+  background-color: #7f53ac;
+  background-image: linear-gradient(315deg, #7f53ac 0%, #647dee 74%);
 }
 
 .main_content {
   display: grid;
   grid-template-columns: 3fr 1fr;
   grid-template-rows: repeat(auto-fit, minmax(200px, 1fr));
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   gap: 20px;
 
-  border: 1px solid gray;
   padding: 10px;
 }
 
+.img {
+  height: 50px;
+  width: 50px;
+}
+
 .footer {
-  border: 1px solid grey;
   height: 40px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: #7f53ac;
+  background-image: linear-gradient(315deg, #7f53ac 0%, #647dee 74%);
 }
 
 .display_area {
@@ -49,8 +64,10 @@
 }
 .book_counter {
   border-radius: 5px;
+
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  background-color: #ffffff;
+  background-color: #f9c5d1;
+  background-image: linear-gradient(315deg, #f9c5d1 0%, #9795ef 74%);
   height: 170px;
   width: 400px;
   padding: 20px;
@@ -69,8 +86,10 @@
   justify-content: center;
   align-items: center;
   border-radius: 5px;
+
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  background-color: #ffffff;
+  background-color: #f9c5d1;
+  background-image: linear-gradient(315deg, #f9c5d1 0%, #9795ef 74%);
   height: 500px;
   width: 400px;
   padding: 20px;
@@ -125,46 +144,41 @@ input {
 }
 
 .card-aRead-T {
-  border-left: 8px solid #ace1af;
+  /*border-left: 8px solid #ace1af;*/
   border-radius: 5px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  background-color: #ffffff;
+
   height: 170px;
   width: 250px;
   padding: 20px;
   color: black;
   text-align: justify;
+  background-color: #8ae9b3;
+  background-image: linear-gradient(315deg, #8ae9b3 0%, #c8d6e5 74%);
 }
 
 .card-aRead-F {
-  border-left: 8px solid #f08080;
   border-radius: 5px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  background-color: #ffffff;
+
   height: 170px;
   width: 250px;
   padding: 20px;
   color: black;
   text-align: justify;
+  background-color: #f9c1b1;
+  background-image: linear-gradient(315deg, #f9c1b1 0%, #fb8085 74%);
 }
 
-.card-aRead-T-button {
+.card-button {
   margin: 2px;
-  background-color: #ace1af;
+  opacity: 0.7;
   width: 110px;
   height: 30px;
   border-radius: 3px;
   border: none;
 }
 
-.card-aRead-F-button {
-  margin: 2px;
-  background-color: #f08080;
-  width: 110px;
-  height: 30px;
-  border-radius: 3px;
-  border: none;
-}
 /*.card-aRead-T button {
   background-color: rgb(22, 177, 81);
   width: 100px;
