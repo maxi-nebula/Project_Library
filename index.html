@@ -35,20 +35,25 @@
           </div>
 
           <div>
-            <form action="post">
+            <form method="post">
               <div class="form-container">
                 <ul>
                   <li>
                     <label for="book_title">Title</label>
-                    <input type="text" name="book_title" id="book_title" />
+                    <input type="text" name="book_title" id="title" required />
                   </li>
                   <li>
                     <label for="book_author">Author</label>
-                    <input type="text" name="book_author" id="book_author" />
+                    <input
+                      type="text"
+                      name="book_author"
+                      id="author"
+                      required
+                    />
                   </li>
                   <li>
                     <label for="book_pages">Total Pages</label>
-                    <input type="text" name="book_pages" id="book_pages" />
+                    <input type="text" name="book_pages" id="pages" required />
                   </li>
                   <li>
                     <label for="book_read">Already read?</label>
@@ -61,7 +66,9 @@
                     />
                   </li>
 
-                  <button id="plus_icon" class="button-others">+</button>
+                  <button id="plus_icon" class="button-others" type="submit">
+                    +
+                  </button>
                   <button id="clear_data" class="button-others">Clear</button>
                 </ul>
               </div>

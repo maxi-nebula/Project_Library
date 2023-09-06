@@ -5,7 +5,7 @@ const plusButton = document.getElementById("plus_icon");
 const displayArea = document.getElementById("d1");
 let inputValues = document.querySelectorAll('input[type="text"]');
 let counter = -1;
-let bookCounterValue = 0;
+let booksRead = 0;
 
 const clearButton = document.getElementById("clear_data");
 const bookCount = document.getElementById("bookcounter");
@@ -26,11 +26,14 @@ plusButton.addEventListener("click", (event) => {
 
   event.preventDefault();
 
-  const titleUi = document.getElementById("book_title").value;
-  const authorUi = document.getElementById("book_author").value;
-  const no_of_pagesUi = document.getElementById("book_pages").value;
-  /*const alreadyReadUi = document.getElementById("book_isRead").value;*/
+  const titleUi = document.getElementById("title").value;
+  const authorUi = document.getElementById("author").value;
+  const no_of_pagesUi = document.getElementById("pages").value;
   const aRead = document.querySelector("#book_isRead").checked;
+
+  if (aRead == true) {
+    readBooksCounter();
+  }
 
   //instantiating the constructor by creating an instance called newBook
   const newBook = new addNewBook(titleUi, authorUi, no_of_pagesUi, aRead);
@@ -113,7 +116,6 @@ removeCard = (rB, bID, cV) => {
     bookCount.innerText = `${cV}`;
 
     if (bookCount.innerText == 0) {
-      console.log("its 0 now");
       resetCounter();
     }
   });
@@ -122,9 +124,14 @@ removeCard = (rB, bID, cV) => {
 switchStatus = (rD, bookC, bcId) => {
   rD.addEventListener("click", () => {
     if (bookC.classList.contains("card-aRead-T")) {
-      bcId.classList.toggle("card-aRead-F");
+      bcId.classList.replace("card-aRead-T", "card-aRead-F");
+      currentBookCount = `${readBooks.textContent}`;
+      booksRead.textContent = parseInt(currentBookCount) - 1;
     } else if (bookC.classList.contains("card-aRead-F")) {
-      bcId.classList.toggle("card-aRead-T");
+      bcId.classList.replace("card-aRead-F", "card-aRead-T");
+      console.log(readBooks.textContent);
+      currentBookCount = `${readBooks.textContent}`;
+      booksRead.textContent = parseInt(currentBookCount) + 1;
     }
     changeTextContent(rD);
   });
@@ -143,7 +150,6 @@ clearForm = (ipV) => {
 };
 
 changeTextContent = (readStatus) => {
-  console.log(readStatus.textContent);
   if (readStatus.textContent == "Read") {
     readStatus.textContent = "Unread";
   } else if (readStatus.textContent == "Unread") {
@@ -166,15 +172,8 @@ resetCounter = () => {
   counter = -1;
 };
 
-readCounter = () => {
-  let readBooksCount = 0;
-
-  if (aR == true) {
-    console.log("read status is true");
-    readBooksCount = readBooksCount + 1;
-    console.log(readBooksCount);
-    readBooks.innerText = `${readBooksCount}`;
-  }
-
-  return readBooksCount;
+readBooksCounter = () => {
+  booksRead = booksRead + 1;
+  readBooks.textContent = booksRead;
+  return booksRead;
 };
